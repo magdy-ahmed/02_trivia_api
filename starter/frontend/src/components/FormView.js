@@ -55,7 +55,7 @@ class FormView extends Component {
       success: (result) => {
         document.getElementById("add-question-form").reset();
         
-        return window.location.replace('/');
+        return;
         
       },
       error: (error) => {
