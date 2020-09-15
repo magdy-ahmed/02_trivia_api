@@ -19,9 +19,14 @@ Displays all categories and questions
 It displays all the questions and you can pass the page number
 3) /questions/<int:id> method['DELETE']
 It removes the question in terms of id
-4) /questions mehtods['POST'] json={'id':<int:new_id>,'question':<str:new_question>,'answer':<str:new_answer>,'difficulty':<int:new_difficulty>,
-'category':<str:new:category>}
-He adds a new question using Jason
+4) /questions mehtods['POST'] json={
+'id' : <int:new_id> ,
+'question' : <str:new_question> ,
+'answer' : <str:new_answer> ,
+'difficulty': <int:new_difficulty> ,
+'category' :<str:new_category>
+}
+it adds a new question using Jason
 5) /categories/<id:category>/questions
 Searches for questions using the category or the query word search
 if id_category==0 it will return all questions
