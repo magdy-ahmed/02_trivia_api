@@ -29,7 +29,7 @@ The API will return three errors types when request fail:
 ## Endpoints
 ## GET /categories
 	Genrals:
-		* returns a list of categories and total number of categories
+		 returns a list of categories and total number of categories
 	sample: curl http://127.0.0.1:5000/categories
 <code>	{
   "categories": {
@@ -43,8 +43,8 @@ The API will return three errors types when request fail:
 }</code>
 ## GET /questions
 	Genrals:
-		* returns a list of questions , list of categories, total number of categories and  total number of questions
-		* Result are pageinated in groups of 10 , include request arrgument to choess page number, starting from 1 
+		 returns a list of questions , list of categories, total number of categories and  total number of questions
+		 Result are pageinated in groups of 10 , include request arrgument to choess page number, starting from 1 
 	sample: curl http://127.0.0.1:5000/questions
 	
 {
