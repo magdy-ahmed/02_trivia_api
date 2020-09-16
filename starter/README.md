@@ -137,9 +137,8 @@ The API will return three errors types when request fail:
 		* great a new question using a submitted quetion,answer,catogry and difficulty returns success value and total number of questions
         
 	sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d   '{"quetion":"whate is postgres","answer":"database","catogry":"1","difficulty":1}'
-	<pre>
-	{
-  "success": true, 
+	
+ <pre>{ "success": true, 
   "total_questions": 23
 }</pre>
 ## DELETE /questions/(question_id)
