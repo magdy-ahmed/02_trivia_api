@@ -15,11 +15,11 @@ Base url:At present this app can be run locally and is not hosted an a base URL 
 app is hosted at default , http://127.0.0.1:5000/ , which is set as a proxy in the frontend configuration
 ## Error Handling
 Errors are returned as JSON objects in the following format:
-<code>{
+<pre>{
 	'success':false,
 	'error':404,
 	'message':'resource not found'
-}</code>
+}</pre>
 The API will return three errors types when request fail:
 <ul>
 <li>404: 'resource not found'</li>
@@ -32,7 +32,8 @@ The API will return three errors types when request fail:
 	Genrals:
 		 returns a list of categories and total number of categories
 	sample: curl http://127.0.0.1:5000/categories
-<code>	{
+	
+<pre>	{
   "categories": {
     "1": "genral", 
     "2": "frontend", 
@@ -41,13 +42,13 @@ The API will return three errors types when request fail:
   "success": true, 
   "total_categories": 3, 
   "total_questions": 18
-}</code>
+}</pre>
 ## GET /questions
 	Genrals:
 		 returns a list of questions , list of categories, total number of categories and  total number of questions
 		 Result are pageinated in groups of 10 , include request arrgument to choess page number, starting from 1 
 	sample: curl http://127.0.0.1:5000/questions
-	
+<pre>	
 {
   "categories": {
     "1": "genral", 
@@ -130,7 +131,7 @@ The API will return three errors types when request fail:
   "total_categories": 3, 
   "total_questions": 19
 }
-
+</pre>
 ## POST /questions
 	Genrals:
 		* great a new question using a submitted quetion,answer,catogry and difficulty returns success value and total number of questions
