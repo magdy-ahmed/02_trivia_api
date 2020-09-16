@@ -137,28 +137,30 @@ The API will return three errors types when request fail:
 		* great a new question using a submitted quetion,answer,catogry and difficulty returns success value and total number of questions
         
 	sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d   '{"quetion":"whate is postgres","answer":"database","catogry":"1","difficulty":1}'
-	
+	<pre>
 	{
   "success": true, 
   "total_questions": 23
-}
+}</pre>
 ## DELETE /questions/(question_id)
 	Genrals:
 		* Deletes the book of given ID if it exists , Returns ID of deleted book , success value and  total number of questions
         
 	sample: curl -X DELETE http://127.0.0.1:5000/questions/15
-	
+<pre>	
 {
   "deleted": 15, 
   "success": true, 
   "total_questions": 17
-}
+}</pre>
 ## POST /questions/search
+	<code>
 	Genrals:
-		* search a questions using a submitted searchTerm returns success value and list of questions
+		 search a questions using a submitted searchTerm returns success value and list of questions
         
 	sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d   '{"searchTerm":"what"}'
-	{
+</code>	
+	<pre>
   "questions": [
     {
       "answer": "python", 
@@ -176,14 +178,14 @@ The API will return three errors types when request fail:
     }
       ], 
   "success": true
-}
+}</pre>
 
 ## GET /categories/(gategory_id)/questions
 Genrals:
 		* search a questions using category id returns success value, total number of questions, and list of questions
 		* Result are pageinated in groups of 10 , include request arrgument to choess page number, starting from 1 
 sample: curl http://127.0.0.1:5000/categories/3/questions
-{
+<pre>{
   "questions": [
     {
       "answer": "nodejs", 
@@ -210,13 +212,13 @@ sample: curl http://127.0.0.1:5000/categories/3/questions
   "success": true, 
   "total_questions": 17
 }
-
+</pre>
 ## POST /quizzes
 	Genrals:
 		* start a game  using a submitted quiz_category and previous_questions returns success value and A new random question
 
 	sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d   '{"quiz_category ":{"id":0},"previous_questions":[1,4,5,10]}'
-{
+<pre>{
   "question":    {
       "answer": "yes", 
       "category": "3", 
@@ -226,6 +228,6 @@ sample: curl http://127.0.0.1:5000/categories/3/questions
     } , 
   "success": true
 }
-
+</pre>
 
 
