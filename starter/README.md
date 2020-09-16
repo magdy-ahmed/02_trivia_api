@@ -31,7 +31,7 @@ The API will return three errors types when request fail:
 	Genrals:
 		* returns a list of categories and total number of categories
 	sample: curl http://127.0.0.1:5000/categories
-	{
+<code>	{
   "categories": {
     "1": "genral", 
     "2": "frontend", 
@@ -40,7 +40,7 @@ The API will return three errors types when request fail:
   "success": true, 
   "total_categories": 3, 
   "total_questions": 18
-}
+}</code>
 ## GET /questions
 	Genrals:
 		* returns a list of questions , list of categories, total number of categories and  total number of questions
