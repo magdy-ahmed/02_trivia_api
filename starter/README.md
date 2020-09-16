@@ -15,11 +15,11 @@ Base url:At present this app can be run locally and is not hosted an a base URL 
 app is hosted at default , http://127.0.0.1:5000/ , which is set as a proxy in the frontend configuration
 ## Error Handling
 Errors are returned as JSON objects in the following format:
-{
+<code>{
 	'success':false,
 	'error':404,
 	'message':'resource not found'
-}
+}</code>
 The API will return three errors types when request fail:
 <ul>
 <li>404: 'resource not found'</li>
