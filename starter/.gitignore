@@ -9,6 +9,6 @@ venv
 ._*
 .Spotlight-V100
 .Trashes
-.node_modules*
+node_modules*
 ehthumbs.db
 Thumbs.db
