@@ -25,7 +25,8 @@ The API will return three errors types when request fail:
 <li>404: 'resource not found'</li>
 <li>422: 'unprocessable'</li>
 <li>405: 'method not allowed'</li>
-<ul>
+</ul>
+	
 ## Endpoints
 ## GET /categories
 	Genrals:
