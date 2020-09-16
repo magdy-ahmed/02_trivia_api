@@ -9,31 +9,221 @@
 3) Add questions and require that they include question and answer text.
 4) Search for questions based on a text query string.
 5) Play the quiz game, randomizing either all questions or within a specific category. 
-## nots
-1)Categories must be entered before starting to use
+# API Referance
+## Gettig Started
+Base url:At present this app can be run locally and is not hosted an a base URL . The backend
+app is hosted at default , http://127.0.0.1:5000/ , which is set as a proxy in the frontend configuration
+## Error Handling
+Errors are returned as JSON objects in the following format:
+{
+	'success':false,
+	'error':404,
+	'message':'resource not found'
+}
+The API will return three errors types when request fail:
+<ul>
+<li>404: 'resource not found'</li>
+<li>422: 'unprocessable'</li>
+<li>405: 'method not allowed'</li>
+<ul>
+## Endpoints
+## GET /categories
+	Genrals:
+		* returns a list of categories and total number of categories
+	sample: curl http://127.0.0.1:5000/categories
+	{
+  "categories": {
+    "1": "genral", 
+    "2": "frontend", 
+    "3": "backend"
+  }, 
+  "success": true, 
+  "total_categories": 3, 
+  "total_questions": 18
+}
+## GET /questions
+	Genrals:
+		* returns a list of questions , list of categories, total number of categories and  total number of questions
+		* Result are pageinated in groups of 10 , include request arrgument to choess page number, starting from 1 
+	sample: curl http://127.0.0.1:5000/questions
+	
+{
+  "categories": {
+    "1": "genral", 
+    "2": "frontend", 
+    "3": "backend"
+  }, 
+  "questions": [
+    {
+      "answer": "........", 
+      "category": null, 
+      "difficulty": null, 
+      "id": 2, 
+      "question": "what is ....."
+    }, 
+    {
+      "answer": "......", 
+      "category": "2", 
+      "difficulty": 4, 
+      "id": 3, 
+      "question": "what is ......"
+    }, 
+    {
+      "answer": ".........", 
+      "category": "1", 
+      "difficulty": 1, 
+      "id": 4, 
+      "question": "where is ...."
+    }, 
+    {
+      "answer": ".......", 
+      "category": "1", 
+      "difficulty": 1, 
+      "id": 5, 
+      "question": "where is ....."
+    }, 
+    {
+      "answer": ".........", 
+      "category": "1", 
+      "difficulty": 1, 
+      "id": 6, 
+      "question": "how are ......"
+    }, 
+    {
+      "answer": ".......", 
+      "category": "3", 
+      "difficulty": 3, 
+      "id": 8, 
+      "question": "what is ........."
+    }, 
+    {
+      "answer": ".........", 
+      "category": "2", 
+      "difficulty": 5, 
+      "id": 9, 
+      "question": "waht is .........."
+    }, 
+    {
+      "answer": ".....", 
+      "category": "2", 
+      "difficulty": 4, 
+      "id": 10, 
+      "question": "how are ......."
+    }, 
+    {
+      "answer": ".......", 
+      "category": "2", 
+      "difficulty": 4, 
+      "id": 11, 
+      "question": "what is ..........."
+    }, 
+    {
+      "answer": "......", 
+      "category": "3", 
+      "difficulty": 3, 
+      "id": 12, 
+      "question": "what is ......."
+    }
+  ], 
+  "success": true, 
+  "total_categories": 3, 
+  "total_questions": 19
+}
 
-## Use Curl
-1) /categories
-Displays all categories and questions
-2) /questions
-It displays all the questions and you can pass the page number
-3) /questions/<int:id> method['DELETE']<br>
-It removes the question in terms of id<br>
-4) /questions mehtods['POST'] json={<br>
-'id' : <int:new_id> ,<br>
-'question' : <str:new_question> ,<br>
-'answer' : <str:new_answer> ,<br>
-'difficulty': <int:new_difficulty> ,<br>
-'category' :<str:new_category><br>
-}<br>
-it adds a new question using Jason<br>
-5) /categories/<id:category>/questions<br>
-Searches for questions using the category or the query word search<br>
-if id_category==0 it will return all questions
-6)/quezzes
-The game begins by returning five questions
+## POST /questions
+	Genrals:
+		* great a new question using a submitted quetion,answer,catogry and difficulty returns success value and total number of questions
+        
+	sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d   '{"quetion":"whate is postgres","answer":"database","catogry":"1","difficulty":1}'
+	
+	{
+  "success": true, 
+  "total_questions": 23
+}
+## DELETE /questions/(question_id)
+	Genrals:
+		* Deletes the book of given ID if it exists , Returns ID of deleted book , success value and  total number of questions
+        
+	sample: curl -X DELETE http://127.0.0.1:5000/questions/15
+	
+{
+  "deleted": 15, 
+  "success": true, 
+  "total_questions": 17
+}
+## POST /questions/search
+	Genrals:
+		* search a questions using a submitted searchTerm returns success value and list of questions
+        
+	sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d   '{"searchTerm":"what"}'
+	{
+  "questions": [
+    {
+      "answer": "python", 
+      "category": "2", 
+      "difficulty": 4, 
+      "id": 11, 
+      "question": "what is laguage the site"
+    }, 
+        {
+      "answer": "nodejs", 
+      "category": "3", 
+      "difficulty": 3, 
+      "id": 12, 
+      "question": "what is frontend"
+    }
+      ], 
+  "success": true
+}
 
+## GET /categories/(gategory_id)/questions
+Genrals:
+		* search a questions using category id returns success value, total number of questions, and list of questions
+		* Result are pageinated in groups of 10 , include request arrgument to choess page number, starting from 1 
+sample: curl http://127.0.0.1:5000/categories/3/questions
+{
+  "questions": [
+    {
+      "answer": "nodejs", 
+      "category": "3", 
+      "difficulty": 3, 
+      "id": 12, 
+      "question": "what is frontend"
+    }, 
+    {
+      "answer": "yes", 
+      "category": "3", 
+      "difficulty": 3, 
+      "id": 13, 
+      "question": "are you want play"
+    }, 
+    {
+      "answer": "yas", 
+      "category": "3", 
+      "difficulty": 3, 
+      "id": 14, 
+      "question": "are you want "
+    }
+  ], 
+  "success": true, 
+  "total_questions": 17
+}
 
+## POST /quizzes
+	Genrals:
+		* start a game  using a submitted quiz_category and previous_questions returns success value and A new random question
+
+	sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d   '{"quiz_category ":{"id":0},"previous_questions":[1,4,5,10]}'
+{
+  "question":    {
+      "answer": "yes", 
+      "category": "3", 
+      "difficulty": 3, 
+      "id": 13, 
+      "question": "are you want play a game"
+    } , 
+  "success": true
+}
 
 
 
